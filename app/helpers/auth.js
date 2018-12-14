@@ -12,3 +12,11 @@ export default function auth () {
     )
   })
 }
+
+export function checkIfAuthed (store) {
+  return store.getState().isAuthed
+}
+
+export function logout () {
+  console.log("Logged out!")
+}

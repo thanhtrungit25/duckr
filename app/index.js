@@ -1,10 +1,11 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import routes from "config/routes"
+import getRoutes from "config/routes"
 import { createStore, applyMiddleware, compose } from "redux"
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 import users from "redux/modules/users"
+import { checkIfAuthed } from "helpers/auth"
 
 const store = createStore(
   users,
@@ -14,7 +15,21 @@ const store = createStore(
   )
 )
 
+function checkAuth (nextState, replace) {
+  const isAuthed = checkIfAuthed(store)
+  const nextPathname = nextState.location.pathname
+  if (nextPathname === "/" || nextPathname === "/auth") {
+    if (isAuthed) {
+      replace("/feed")
+    }
+  } else {
+    if (isAuthed !== true) {
+      replace("/auth")
+    }
+  }
+}
+
 ReactDOM.render(
-  <Provider store={store}>{routes}</Provider>,
+  <Provider store={store}>{getRoutes(checkAuth)}</Provider>,
   document.getElementById("app")
 )

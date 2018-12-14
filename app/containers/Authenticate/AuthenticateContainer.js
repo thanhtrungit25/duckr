@@ -11,8 +11,13 @@ const AuthenticateContainer = React.createClass({
     fetchAndHandleAuthedUser: PropTypes.func.isRequired,
     error: PropTypes.string.isRequired
   },
+  contextTypes: {
+    router: PropTypes.object.isRequired
+  },
   handleAuth () {
-    this.props.fetchAndHandleAuthedUser()
+    this.props
+      .fetchAndHandleAuthedUser()
+      .then(() => this.context.router.replace("/feed"))
   },
   render () {
     return (
