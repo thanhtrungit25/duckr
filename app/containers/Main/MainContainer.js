@@ -6,7 +6,8 @@ import { container, innerContainer } from "./styles.css"
 
 const MainContainer = React.createClass({
   propTypes: {
-    isAuthed: PropTypes.bool.isRequired
+    isAuthed: PropTypes.bool.isRequired,
+    children: PropTypes.node.isRequired
   },
   render () {
     return (
