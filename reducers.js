@@ -65,7 +65,7 @@ export default function users(state = initialState, action) {
         ...state,
         isFetching: false,
         error: "",
-        [action.uid]: user([action.uid], action)
+        [action.uid]: user(state[action.uid], action)
       }
     default:
       return state
