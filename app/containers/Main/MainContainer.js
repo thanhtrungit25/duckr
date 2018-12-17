@@ -51,6 +51,9 @@ const MainContainer = React.createClass({
 })
 
 export default connect(
-  state => ({ isAuthed: state.isAuthed, isFetching: state.isFetching }),
+  state => ({
+    isAuthed: state.users.isAuthed,
+    isFetching: state.users.isFetching
+  }),
   dispatch => bindActionCreators(userActionCreators, dispatch)
 )(MainContainer)
