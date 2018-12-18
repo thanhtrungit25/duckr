@@ -20,8 +20,8 @@ const modalStyle = {
   padding: 0
 }
 
-function Modal(props) {
-  function submitDuck() {
+function Modal (props) {
+  function submitDuck () {
     // console.log("Duck", props.duckText)
     // console.log("user", props.user)
     return props.duckFanout(formatDuck(props.duckText, props.user))
@@ -34,8 +34,7 @@ function Modal(props) {
         style={modalStyle}
         isOpen={props.isOpen}
         onRequestClose={props.closeModal}
-        contentLabel="Modal"
-      >
+        contentLabel='Modal'>
         <div className={newDuckTop}>
           <span>{"Compose New Duck"}</span>
           <span className={pointer} onClick={props.closeModal}>
@@ -47,15 +46,13 @@ function Modal(props) {
             value={props.duckText}
             onChange={e => props.updateDuckText(e.target.value)}
             maxLength={140}
-            type="text"
+            type='text'
             className={newDuckInput}
-            placeholder="What's on your mind?"
-          />
+            placeholder="What's on your mind?"/>
           <button
             className={submitDuckBtn}
             disabled={props.isSubmitDisabled}
-            onClick={submitDuck}
-          >
+            onClick={submitDuck}>
             {"Duck"}
           </button>
         </div>
