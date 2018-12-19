@@ -36,7 +36,12 @@ const DuckContainer = React.createClass({
     this.context.router.push("/duckDetail/" + this.props.duck.uid)
   },
   render () {
-    return <Duck goToProfile={this.goToProfile} onClick={this.handleClick} />
+    return (
+      <Duck
+        {...this.props}
+        goToProfile={this.goToProfile}
+        onClick={this.handleClick}/>
+    )
   }
 })
 
