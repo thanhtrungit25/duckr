@@ -38,7 +38,7 @@ Duck.propTypes = {
 
 function Duck (props) {
   // console.log("Duck", props.duck)
-  const starIcon = props.duck.isLiked ? likedIcon : icon
+  const starIcon = props.isLiked ? likedIcon : icon
   const starFn = props.isLiked ? props.handleDeleteLike : props.addAndHandleLike
   return (
     <div
