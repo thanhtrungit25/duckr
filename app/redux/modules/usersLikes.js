@@ -115,6 +115,11 @@ export default function usersLikes (state = initialState, action) {
         isFetching: false,
         error: ""
       }
+    case ADD_LIKE:
+      return {
+        ...state,
+        [action.duckId]: true
+      }
     case REMOVE_LIKE:
       return Object.keys(state)
         .filter(duckId => action.duckId !== duckId)
