@@ -1,7 +1,8 @@
 import { saveToUsersLikes, incrementNumberOfLikes } from "helpers/api"
 import {
   deleteFromUsersLikes,
-  decrementNumbersOfLikes
+  decrementNumbersOfLikes,
+  fetchUsersLikes
 } from "../../helpers/api"
 
 export const ADD_LIKE = "ADD_LIKE"
@@ -80,6 +81,16 @@ export function handleDeleteLike (duckId, e) {
       console.warn(error)
       dispatch(addLike(duckId))
     })
+  }
+}
+
+export function setUsersLikes () {
+  return function (dispatch, getState) {
+    const uid = getState().users.authedId
+    dispatch(fetchingLikes())
+    fetchUsersLikes(uid)
+      .then(likes => dispatch(fetchingLikesSuccess(likes)))
+      .catch(error => dispatch(fetchLikesError(error)))
   }
 }
 
